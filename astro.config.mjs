@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://clickfix.work',
+  site: process.env.SITE_URL || 'https://app.clickfix.work',
   integrations: [
     solidJs(),
     sitemap({
