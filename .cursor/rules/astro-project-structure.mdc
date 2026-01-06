@@ -1,0 +1,134 @@
+# Astro Project Structure
+
+## Current Project Overview
+
+This is an Astro 5 project with Solid.js integration, using Bun as the package manager.
+
+## Root Level Organization
+
+```
+/
+├── src/
+├── public/
+├── astro.config.mjs
+├── tsconfig.json
+├── package.json
+├── bun.lock
+└── README.md
+```
+
+## Source Directory (`src/`)
+
+Current structure of this project:
+
+```
+src/
+├── assets/          # Static assets (images, SVGs) imported in components
+│   ├── astro.svg
+│   └── background.svg
+├── components/      # Reusable Astro and Solid.js components
+│   └── Welcome.astro
+├── layouts/         # Page layout templates
+│   └── Layout.astro
+└── pages/           # File-based routing (each file = route)
+    └── index.astro
+```
+
+## Expandable Structure
+
+As your project grows, consider adding:
+
+```
+src/
+├── components/
+│   ├── ui/              # UI components (Astro)
+│   └── islands/         # Interactive Solid.js components
+│       ├── Counter.tsx
+│       └── Form.tsx
+├── layouts/
+│   ├── Layout.astro     # Base layout
+│   └── BlogLayout.astro # Specialized layouts
+├── pages/
+│   ├── index.astro
+│   ├── about.astro
+│   ├── blog/
+│   │   ├── index.astro
+│   │   └── [slug].astro  # Dynamic routes
+│   └── api/              # API endpoints
+│       └── hello.ts
+├── content/              # Content collections (optional)
+│   ├── config.ts
+│   └── blog/
+├── styles/               # Global styles
+│   └── global.css
+└── utils/                # Helper functions
+    └── helpers.ts
+```
+
+## Solid.js Integration
+
+This project uses `@astrojs/solid-js` for interactive islands:
+
+```
+src/
+└── components/
+    └── islands/
+        ├── Counter.tsx           # Solid.js component
+        ├── Counter.module.css    # CSS modules (optional)
+        └── Form.tsx
+```
+
+Use Solid components with hydration directives:
+```astro
+<Counter client:load />
+<Form client:visible />
+```
+
+## File Naming Conventions
+
+- **Astro components**: `PascalCase.astro` (e.g., `Welcome.astro`, `Header.astro`)
+- **Layouts**: `PascalCase.astro` (e.g., `Layout.astro`, `BlogLayout.astro`)
+- **Pages**: `kebab-case.astro` or `[dynamic].astro` (e.g., `index.astro`, `about.astro`, `[slug].astro`)
+- **Solid.js components**: `PascalCase.tsx` (e.g., `Counter.tsx`, `UserForm.tsx`)
+- **TypeScript utilities**: `kebab-case.ts` or `camelCase.ts`
+- **CSS modules**: `PascalCase.module.css` (e.g., `Counter.module.css`)
+- **Global styles**: `kebab-case.css` (e.g., `global.css`)
+
+## Project Configuration
+
+Core configuration files:
+
+- `astro.config.mjs` - Astro config with Solid.js integration
+- `tsconfig.json` - TypeScript config (extends `astro/tsconfigs/strict`)
+- `package.json` - Dependencies and scripts
+- `bun.lock` - Bun lockfile
+- `.env` - Environment variables (if needed)
+
+## Public Directory
+
+Static assets served as-is:
+
+```
+public/
+├── favicon.svg
+├── robots.txt       # (add if needed)
+└── images/          # (add if needed)
+```
+
+Files in `public/` are served at root path (e.g., `/favicon.svg`).
+
+## Build and Output
+
+- **Build command**: `bun run build`
+- **Build output**: `dist/`
+- **Dev server**: `bun run dev` (runs on `localhost:4321`)
+- **Preview**: `bun run preview`
+- **Default mode**: Static site generation (SSG)
+
+## Package Manager
+
+This project uses **Bun**. All commands should use `bun`:
+- `bun install` - Install dependencies
+- `bun run dev` - Start dev server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build

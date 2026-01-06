@@ -1,0 +1,41 @@
+---
+import { useTranslations, type Lang } from "../i18n/ui";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about" class="parallax-container">
+  <img src="src/assets/img/common/cloud.svg" alt="Cloud" />
+  <div class="about-content">
+    <p class="lead">{t("about.text")}</p>
+  </div>
+</section>
+
+<style>
+  .parallax-container {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .about-content {
+    width: 300px;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    font-family: var(--font-serif);
+    color: inherit;
+    line-height: 1.6;
+    text-align: left;
+  }
+</style>

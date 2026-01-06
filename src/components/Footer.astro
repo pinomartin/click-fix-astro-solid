@@ -1,0 +1,31 @@
+---
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const YEAR = new Date().getFullYear();
+---
+
+<footer class="footer section">
+  <div class="container text-center">
+    <p class="copyright">{`© ${YEAR} ${t("footer.copyright")}`}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    margin-top: auto;
+  }
+
+  .copyright {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+</style>

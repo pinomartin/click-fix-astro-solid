@@ -1,0 +1,72 @@
+---
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="catchup section">
+  <div class="container catchup-container">
+    <div class="catchup-content">
+      <h2 class="catchup-title">{t("catchup.title")}</h2>
+      <p class="catchup-text">{t("catchup.text")}</p>
+    </div>
+    <div class="catchup-action">
+      <a href="#contact" class="btn btn-primary">{t("catchup.cta")}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .catchup {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+  }
+
+  .catchup-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+
+  .catchup-content {
+    flex: 1;
+  }
+
+  .catchup-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+  }
+
+  .catchup-text {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    max-width: 600px;
+  }
+
+  .catchup-action {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .catchup-container {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--space-lg);
+    }
+
+    .catchup-title {
+      font-size: 1.75rem;
+    }
+  }
+</style>

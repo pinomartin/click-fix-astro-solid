@@ -1,0 +1,106 @@
+---
+import { useTranslations, type Lang } from "../i18n/ui";
+import LottieRender from "./islands/LottieRender";
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="hero" class="hero section">
+  <div class="container hero-layout">
+    <div class="hero-media">
+      <LottieRender
+        client:visible
+        src={"https://lottie.host/e934f7fd-7816-485f-aa20-60e2288e7234/AhSJ5xLSU6.lottie"}
+      />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">{t("hero.title")}</h1>
+      <p class="hero-subtitle">{t("hero.subtitle")}</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">{t("hero.cta")}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 90dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+      circle at 50% 0%,
+      var(--color-hero-glow) 0%,
+      var(--color-bg) 80%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-layout {
+    display: flex;
+    flex-direction: row; /* Desktop: side-by-side */
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-media {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Limit width if necessary */
+    max-width: 50%;
+  }
+
+  .hero-content {
+    flex: 1;
+    text-align: left; /* Or right if you prefer */
+    max-width: 600px; /* Optional: limit content width for readability */
+  }
+
+  .hero-title {
+    margin-bottom: var(--space-md);
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-muted);
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 768px) {
+    .hero-layout {
+      flex-direction: column; /* Mobile: stacked */
+      text-align: center;
+      gap: var(--space-md);
+    }
+
+    .hero-media {
+      width: 100%;
+      max-width: 300px; /* Adjust size of lottie on mobile */
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import { useTranslations, type Lang } from "../i18n/ui";
+import ClientsCarousel from "./islands/ClientsCarousel";
+import PORTFOLIO from "../constants/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="clients" class="clients section">
+  <div class="container">
+    <h2 class="section-title text-center">{t("clients.title")}</h2>
+
+    <div class="clients-wrapper">
+      <ClientsCarousel client:visible clients={PORTFOLIO} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients-wrapper {
+    margin-top: var(--space-xl);
+  }
+</style>

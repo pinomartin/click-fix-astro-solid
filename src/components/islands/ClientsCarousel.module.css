@@ -1,0 +1,103 @@
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.navButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.navButton:hover:not(:disabled) {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--color-border);
+}
+
+.track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem; /* Space for scrollbar if visible, typically hidden by global styles if needed */
+  scrollbar-width: none; /* Firefox */
+}
+
+.track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.card {
+  flex: 0 0 280px; /* Fixed width cards */
+  scroll-snap-align: start;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-decoration: none;
+  color: var(--color-text); /* Use text color, might need override for specific card BGs if too dark */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+/* For dark mode, ensure text is readable on pastel colors. 
+   Pastels in theme.css are adjusted for dark mode, but strict text color might need check.
+   Using specific var(--color-text) handles the theme switch broadly.
+*/
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.logoPlaceholder {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin-bottom: auto;
+  margin-top: auto;
+  opacity: 0.8;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  margin-top: auto;
+}
+

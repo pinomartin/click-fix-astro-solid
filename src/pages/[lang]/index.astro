@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import CatchUp from "../../components/CatchUp.astro";
+import About from "../../components/About.astro";
+import Services from "../../components/Services.astro";
+import Clients from "../../components/Clients.astro";
+import ContactForm from "../../components/islands/ContactForm";
+import { useTranslations, type Lang } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang as Lang) || "es";
+const t = useTranslations(currentLang);
+
+const formLabels = {
+  title: t("contact.title"),
+  name: t("contact.name"),
+  email: t("contact.email"),
+  message: t("contact.message"),
+  submit: t("contact.submit"),
+  messageSentTitle: t("contact.messageSent.title"),
+  messageSentDescription: t("contact.messageSent.description"),
+};
+---
+
+<Layout lang={currentLang}>
+  <Hero lang={currentLang} />
+  <CatchUp lang={currentLang} />
+  <About lang={currentLang} />
+  <Services lang={currentLang} />
+
+  <Clients lang={currentLang} />
+  <section id="contact" class="section contact-section">
+    <div class="container contact-container">
+      <div class="contact-header text-center">
+        <h2>{t("contact.title")}</h2>
+        <p class="contact-catchphrase">{t("contact.catchphrase")}</p>
+      </div>
+
+      <ContactForm client:visible labels={{ ...formLabels, title: "" }} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-section {
+    background-color: var(--color-bg);
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .contact-catchphrase {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text);
+    font-family: var(--font-serif);
+  }
+</style>
