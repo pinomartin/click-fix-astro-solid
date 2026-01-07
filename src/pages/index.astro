@@ -1,4 +1,169 @@
 ---
-// Redirect to default language
-return Astro.redirect("/es");
+return Astro.redirect("/es", 302);
 ---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=/es" />
+    <title>Click & Fix</title>
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-bg: #f9f8f6;
+        --color-text: #1a1a1a;
+        --color-accent: #d06c56;
+        --font-serif: "Merriweather", serif;
+        --font-sans: "Inter", system-ui, sans-serif;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-bg: #1a1a1a;
+          --color-text: #f9f8f6;
+          --color-accent: #e08b79;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-sans);
+        transition: background-color 0.3s ease;
+      }
+
+      .loader-container {
+        text-align: center;
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .logo {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 1.75rem;
+        color: var(--color-text);
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+        transition: color 0.3s ease;
+      }
+
+      .loader {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto;
+        border: 3px solid transparent;
+        border-top: 3px solid var(--color-accent);
+        border-right: 3px solid var(--color-accent);
+        border-radius: 50%;
+        animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Subtle pulse animation */
+      .loader::before {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        border: 3px solid var(--color-accent);
+        opacity: 0.2;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0;
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 1.5rem;
+        }
+
+        .loader {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader-container">
+      <div class="logo">Click & Fix</div>
+      <div class="loader" role="status">
+        <span class="sr-only">Cargando...</span>
+      </div>
+    </div>
+
+    <script is:inline>
+      // Instant redirect with fallback
+      (function () {
+        // Detect preferred language
+        const userLang = navigator.language?.toLowerCase() || "es";
+        const targetLang = userLang.includes("en") ? "en" : "es";
+
+        // Immediate redirect
+        window.location.replace("/" + targetLang);
+      })();
+    </script>
+  </body>
+</html>

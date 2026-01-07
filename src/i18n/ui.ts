@@ -49,7 +49,7 @@ export const ui = {
     "contact.submit": "Enviar Mensaje",
     "contact.messageSent.title": "¡Mensaje enviado!",
     "contact.messageSent.description":
-      "Te hemos abierto WhatsApp para continuar la conversación. También recibirás una confirmación por email.",
+      "Te hemos abierto WhatsApp para continuar la conversación.",
     "footer.copyright": "Click & Fix. Todos los derechos reservados.",
     "seo.title": "Click & Fix | Soluciones Digitales",
     "seo.description":
@@ -96,7 +96,7 @@ export const ui = {
     "contact.submit": "Send Message",
     "contact.messageSent.title": "!Message Sent!",
     "contact.messageSent.description":
-      "We've opened WhatsApp for you to continue the conversation. You'll also receive a confirmation email.",
+      "We've opened WhatsApp for you to continue the conversation.",
     "footer.copyright": "Click & Fix. All rights reserved.",
     "seo.title": "Click & Fix | Digital Solutions",
     "seo.description":
