@@ -1,16 +1,7 @@
 import { createSignal, onMount, onCleanup, For } from "solid-js";
 import styles from "./ClientsCarousel.module.css";
 import ClientItem from "./ClientItem";
-
-type Client = {
-  name: string;
-  url: string;
-  color: string;
-  logo: string;
-  image: string;
-  description: string;
-  key: string;
-};
+import type { Client } from "../../types/Client";
 
 type ClientsCarouselProps = {
   clients: Client[];
@@ -84,19 +75,4 @@ export default function ClientsCarousel(props: Readonly<ClientsCarouselProps>) {
       </div>
     </div>
   );
-}
-
-{
-  /* <a
-  href={client.url}
-  target="_blank"
-  rel="noopener noreferrer"
-  class={styles.card}
-  style={{ "background-color": client.color }}
->
-  <div class={styles.content}>
-    <div class={styles.logoPlaceholder}>{client.logo}</div>
-    <h3 class={styles.name}>{client.name}</h3>
-  </div>
-</a> */
 }

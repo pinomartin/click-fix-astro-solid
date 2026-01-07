@@ -1,3 +1,23 @@
+import type { ImageMetadata } from "astro";
+
+// Importar todas las imágenes del directorio usando Vite's glob import
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/img/sites/*.webp",
+  { eager: true }
+);
+
+// Helper para obtener la imagen importada por nombre de archivo
+function getImage(filename: string): ImageMetadata {
+  const imagePath = `../assets/img/sites/${filename}`;
+  const image = images[imagePath];
+
+  if (!image) {
+    throw new Error(`Image not found: ${imagePath}`);
+  }
+
+  return image.default;
+}
+
 const PORTFOLIO = [
   {
     key: "alinails",
@@ -5,7 +25,7 @@ const PORTFOLIO = [
     description: "Landing page for a nails salon.",
     color: "var(--color-pastel-beige)",
     logo: "AN",
-    image: "src/assets/img/sites/alinails.webp",
+    image: getImage("alinails.webp"),
     url: "https://alinails.netlify.app",
   },
   {
@@ -14,7 +34,7 @@ const PORTFOLIO = [
     description: "Landing page for a beauty and aesthetics products.",
     color: "var(--color-pastel-green)",
     logo: "MTA",
-    image: "src/assets/img/sites/maktub.webp",
+    image: getImage("maktub.webp"),
     url: "https://maktubaesthetics.netlify.app",
   },
   {
@@ -23,7 +43,7 @@ const PORTFOLIO = [
     description: "Landing page for a online store.",
     color: "var(--color-pastel-beige)",
     logo: "MC",
-    image: "src/assets/img/sites/mis_cositas.webp",
+    image: getImage("mis_cositas.webp"),
     url: "https://miscositas.netlify.app",
   },
   {
@@ -32,7 +52,7 @@ const PORTFOLIO = [
     description: "Landing page for a beauty and aesthetics products.",
     color: "var(--color-pastel-purple)",
     logo: "KH",
-    image: "src/assets/img/sites/ka_hache.webp",
+    image: getImage("ka_hache.webp"),
     url: "https://kahache.netlify.app",
   },
   {
@@ -41,7 +61,7 @@ const PORTFOLIO = [
     description: "Modern online store with seamless checkout experience",
     color: "var(--color-pastel-beige)",
     logo: "1080",
-    image: "src/assets/img/sites/1080_prod.webp",
+    image: getImage("1080_prod.webp"),
     url: "https://1080prod.netlify.app",
   },
   {
@@ -50,7 +70,7 @@ const PORTFOLIO = [
     description: "Modern online store with seamless checkout experience",
     color: "var(--color-pastel-purple)",
     logo: "YD",
-    image: "src/assets/img/sites/your_driver.webp",
+    image: getImage("your_driver.webp"),
     url: "https://yourdriver.netlify.app",
   },
   {
@@ -59,7 +79,7 @@ const PORTFOLIO = [
     description: "Landing page for a DJ and music producer.",
     color: "var(--color-pastel-green)",
     logo: "GPDJ",
-    image: "src/assets/img/sites/djgonpino.webp",
+    image: getImage("djgonpino.webp"),
     url: "https://gonpinodj.netlify.app",
   },
   {
@@ -68,7 +88,7 @@ const PORTFOLIO = [
     description: "Professional website for a leading finance company",
     color: "var(--color-pastel-purple)",
     logo: "MYA",
-    image: "src/assets/img/sites/moreno.webp",
+    image: getImage("moreno.webp"),
     url: "https://morenoyasociados.ar",
   },
 ];

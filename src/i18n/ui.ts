@@ -47,9 +47,9 @@ export const ui = {
     "contact.email": "Email",
     "contact.message": "Mensaje",
     "contact.submit": "Enviar Mensaje",
-    "contact.messageSent.title": "Mensaje enviado",
+    "contact.messageSent.title": "¡Mensaje enviado!",
     "contact.messageSent.description":
-      "A la brevedad nos pondremos en contacto contigo. :)",
+      "Te hemos abierto WhatsApp para continuar la conversación. También recibirás una confirmación por email.",
     "footer.copyright": "Click & Fix. Todos los derechos reservados.",
     "seo.title": "Click & Fix | Soluciones Digitales",
     "seo.description":
@@ -94,8 +94,9 @@ export const ui = {
     "contact.email": "Email",
     "contact.message": "Message",
     "contact.submit": "Send Message",
-    "contact.messageSent.title": "Message Sent!",
-    "contact.messageSent.description": "We'll get back to you soon.",
+    "contact.messageSent.title": "!Message Sent!",
+    "contact.messageSent.description":
+      "We've opened WhatsApp for you to continue the conversation. You'll also receive a confirmation email.",
     "footer.copyright": "Click & Fix. All rights reserved.",
     "seo.title": "Click & Fix | Digital Solutions",
     "seo.description":

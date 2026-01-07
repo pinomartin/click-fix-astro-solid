@@ -103,6 +103,7 @@ const ogImage = new URL("/og-image.jpg", Astro.site);
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="google-site-verification" content={process.env.GOOGLE_SITE} />
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {

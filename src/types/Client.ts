@@ -2,7 +2,7 @@ type Client = {
   url: string;
   name: string;
   description: string;
-  image: string;
+  image: ImageMetadata["src"];
   color: string;
   key: string;
   logo: string;

@@ -98,3 +98,13 @@
   font-size: 2rem;
   margin: 0 auto 1.5rem;
 }
+
+.error {
+  background-color: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fcc;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
