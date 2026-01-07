@@ -41,7 +41,7 @@ export default function ContactForm(props: Readonly<ContactFormProps>) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: import.meta.env.WEB3_MAILING,
+          access_key: import.meta.env.PUBLIC_WEB3_MAILING,
           name,
           email,
           message,
@@ -59,8 +59,9 @@ export default function ContactForm(props: Readonly<ContactFormProps>) {
 
       // 2. Abrir WhatsApp en nueva pestaña
       const whatsappMessage = `Hola! 👋\n\nSoy *${name}*\n\nEmail: ${email}\n\nMensaje: ${message}`;
+
       const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER.replaceAll(
-        /[D+]/g,
+        /\D+/g,
         ""
       )}?text=${encodeURIComponent(whatsappMessage)}`;
 
