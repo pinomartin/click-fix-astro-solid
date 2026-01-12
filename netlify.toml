@@ -2,31 +2,7 @@
   command = "bun run build"
   publish = "dist"
 
-[[redirects]]
-  from = "/"
-  to = "/es"
-  status = 302
-  force = false
-  conditions = {Language = ["es"]}
-
-[[redirects]]
-  from = "/"
-  to = "/en"
-  status = 302
-  force = false
-  conditions = {Language = ["en"]}
-
-[[redirects]]
-  from = "/"
-  to = "/es"
-  status = 302
-  force = false
-
-[[redirects]]
-  from = "https://clickfixapp.netlify.app/*"
-  to = "https://app.clickfix.work/:splat"
-  status = 301
-  force = true
+# Las redirecciones ahora se manejan en public/_redirects
 
 [[headers]]
   for = "/*"

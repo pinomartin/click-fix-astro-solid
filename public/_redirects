@@ -1,0 +1,7 @@
+# Redirección de la raíz basada en idioma del navegador
+/  /es  302  Language=es
+/  /en  302  Language=en
+/  /es  302
+
+# Redirección del dominio de Netlify al dominio personalizado
+https://clickfixapp.netlify.app/*  https://app.clickfix.work/:splat  301!
