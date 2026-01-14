@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from "../i18n/ui";
-
+import cloudSvg from "../assets/img/common/cloud.svg";
 type Props = {
   lang: Lang;
 };
@@ -10,7 +10,7 @@ const t = useTranslations(lang);
 ---
 
 <section id="about" class="parallax-container">
-  <img src="src/assets/img/common/cloud.svg" alt="Cloud" />
+  <img src={cloudSvg.src} alt="Cloud" loading="lazy" />
   <div class="about-content">
     <p class="lead">{t("about.text")}</p>
   </div>
